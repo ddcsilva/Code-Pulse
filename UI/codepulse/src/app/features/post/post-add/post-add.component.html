@@ -1,0 +1,55 @@
+<div class="container">
+    <h1 class="mt-3">Adicionar Post</h1>
+
+    <!-- <form #form="ngForm" (ngSubmit)="adicionarPost()"> -->
+    <form>
+        <div class="mt-2 mb-5">
+            <div class="mt-3">
+                <label for="titulo" class="form-label">Título</label>
+                <input type="text" class="form-control" id="titulo" name="titulo">
+            </div>
+
+            <div class="mt-3">
+                <label for="slug" class="form-label">Slug</label>
+                <input type="text" class="form-control" id="slug" name="slug">
+            </div>
+
+            <div class="mt-3">
+                <label for="descricaoCurta" class="form-label">Descrição Curta</label>
+                <input type="text" class="form-control" id="descricaoCurta" name="descricaoCurta">
+            </div>
+
+            <div class="mt-3">
+                <label for="conteudo" class="form-label">Conteúdo</label>
+                <textarea class="form-control" id="conteudo" name="conteudo"></textarea>
+            </div>
+
+            <div class="mt-3">
+                <label for="urlImagemDestaque" class="form-label">URL Imagem Destaque</label>
+                <input type="text" class="form-control" id="urlImagemDestaque" name="urlImagemDestaque">
+            </div>
+
+            <div class="mt-3">
+                <label for="dataPublicacao" class="form-label">Data Publicação</label>
+                <input type="date" class="form-control" id="dataPublicacao" name="dataPublicacao">
+            </div>
+
+            <div class="mt-3">
+                <label for="autor" class="form-label">Autor</label>
+                <input type="text" class="form-control" id="autor" name="autor">
+            </div>
+
+            <div class="form-check mt-3">
+                <input class="form-check-input" type="checkbox" id="ehVisivel">
+                <label class="form-check-label" for="ehVisivel">
+                    Visível?
+                </label>
+            </div>
+
+            <div class="mt-3">
+                <button type="submit" class="btn btn-primary">Salvar</button>
+                <a [routerLink]="['/admin/posts']" class="btn btn-light">Cancelar</a>
+            </div>
+        </div>
+    </form>
+</div>
