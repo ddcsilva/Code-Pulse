@@ -5,4 +5,6 @@ namespace CodePulse.API.Repositories.Interface;
 public interface ICategoriaRepository
 {
     Task<Categoria> CriarAsync(Categoria categoria);
+    
+    Task<IEnumerable<Categoria>> ObterTodasAsync();
 }

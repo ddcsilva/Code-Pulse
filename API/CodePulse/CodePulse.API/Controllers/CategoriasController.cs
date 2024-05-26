@@ -17,6 +17,25 @@ public class CategoriasController : Controller
         _categoriaRepository = categoriaRepository;
     }
 
+    [HttpGet]
+    public async Task<IActionResult> ObterTodasCategorias()
+    {
+        var categorias = await _categoriaRepository.ObterTodasAsync();
+
+        var response = new List<CriarCategoriaResponseDTO>();
+        foreach (var categoria in categorias)
+        {
+            response.Add(new CriarCategoriaResponseDTO
+            {
+                Id = categoria.Id,
+                Nome = categoria.Nome,
+                Slug = categoria.Slug
+            });
+        }
+
+        return Ok(response);
+    }
+
     [HttpPost]
     public async Task<IActionResult> CriarCategoria(CriarCategoriaRequestDTO request)
     {
@@ -25,7 +44,7 @@ public class CategoriasController : Controller
             Nome = request.Nome,
             Slug = request.Slug
         };
-        
+
         await _categoriaRepository.CriarAsync(categoria);
 
         var response = new CriarCategoriaResponseDTO
