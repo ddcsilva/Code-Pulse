@@ -9,4 +9,6 @@ public interface ICategoriaRepository
     Task<IEnumerable<Categoria>> ObterTodasAsync();
 
     Task<Categoria?> ObterPorIdAsync(Guid id);
+
+    Task<Categoria?> AtualizarAsync(Categoria categoria);
 }

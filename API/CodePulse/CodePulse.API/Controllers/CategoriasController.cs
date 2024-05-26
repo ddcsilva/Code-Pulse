@@ -77,4 +77,32 @@ public class CategoriasController : Controller
 
         return Ok(response);
     }
+
+    [HttpPut]
+    [Route("{id:Guid}")]
+    public async Task<IActionResult> AtualizarCategoria([FromRoute] Guid id, [FromBody] AtualizarCategoriaRequestDTO request)
+    {
+        var categoria = new Categoria
+        {
+            Id = id,
+            Nome = request.Nome,
+            Slug = request.Slug
+        };
+
+        categoria = await _categoriaRepository.AtualizarAsync(categoria);
+
+        if (categoria is null)
+        {
+            return NotFound();
+        }
+
+        var response = new AtualizarCategoriaResponseDTO
+        {
+            Id = categoria.Id,
+            Nome = categoria.Nome,
+            Slug = categoria.Slug
+        };
+
+        return Ok(response);
+    }
 }

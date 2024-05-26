@@ -31,4 +31,19 @@ public class CategoriaRepository : ICategoriaRepository
 
         return categoria;
     }
+
+    public async Task<Categoria?> AtualizarAsync(Categoria categoria)
+    {
+        var categoriaExistente = await _context.Categorias.FirstOrDefaultAsync(c => c.Id == categoria.Id);
+
+        if (categoriaExistente is not null)
+        {
+            _context.Entry(categoriaExistente).CurrentValues.SetValues(categoria);
+            await _context.SaveChangesAsync();
+
+            return categoria;
+        }
+
+        return null;
+    }
 }
