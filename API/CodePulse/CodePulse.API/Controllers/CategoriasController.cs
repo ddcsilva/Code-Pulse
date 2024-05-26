@@ -36,8 +36,29 @@ public class CategoriasController : Controller
         return Ok(response);
     }
 
+    [HttpGet]
+    [Route("{id:Guid}")]
+    public async Task<IActionResult> ObterCategoriaPorId([FromRoute] Guid id)
+    {
+        var categoria = await _categoriaRepository.ObterPorIdAsync(id);
+
+        if (categoria is null)
+        {
+            return NotFound();
+        }
+
+        var response = new CriarCategoriaResponseDTO
+        {
+            Id = categoria.Id,
+            Nome = categoria.Nome,
+            Slug = categoria.Slug
+        };
+
+        return Ok(response);
+    }
+
     [HttpPost]
-    public async Task<IActionResult> CriarCategoria(CriarCategoriaRequestDTO request)
+    public async Task<IActionResult> CriarCategoria([FromBody] CriarCategoriaRequestDTO request)
     {
         var categoria = new Categoria
         {

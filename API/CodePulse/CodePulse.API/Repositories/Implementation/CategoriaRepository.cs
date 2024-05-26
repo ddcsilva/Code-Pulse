@@ -19,6 +19,11 @@ public class CategoriaRepository : ICategoriaRepository
         return await _context.Categorias.ToListAsync();
     }
 
+    public Task<Categoria?> ObterPorIdAsync(Guid id)
+    {
+        return _context.Categorias.FirstOrDefaultAsync(c => c.Id == id);
+    }
+
     public async Task<Categoria> CriarAsync(Categoria categoria)
     {
         await _context.Categorias.AddAsync(categoria);
