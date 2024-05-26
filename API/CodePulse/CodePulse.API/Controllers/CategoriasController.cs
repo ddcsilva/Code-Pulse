@@ -105,4 +105,25 @@ public class CategoriasController : Controller
 
         return Ok(response);
     }
+
+    [HttpDelete]
+    [Route("{id:Guid}")]
+    public async Task<IActionResult> RemoverCategoria([FromRoute] Guid id)
+    {
+        var categoria = await _categoriaRepository.RemoverAsync(id);
+
+        if (categoria is null)
+        {
+            return NotFound();
+        }
+
+        var response = new CriarCategoriaResponseDTO
+        {
+            Id = categoria.Id,
+            Nome = categoria.Nome,
+            Slug = categoria.Slug
+        };
+
+        return Ok(response);
+    }
 }

@@ -11,4 +11,6 @@ public interface ICategoriaRepository
     Task<Categoria?> ObterPorIdAsync(Guid id);
 
     Task<Categoria?> AtualizarAsync(Categoria categoria);
+
+    Task<Categoria?> RemoverAsync(Guid id);
 }

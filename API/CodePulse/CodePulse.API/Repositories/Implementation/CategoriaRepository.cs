@@ -46,4 +46,19 @@ public class CategoriaRepository : ICategoriaRepository
 
         return null;
     }
+
+    public async Task<Categoria?> RemoverAsync(Guid id)
+    {
+        var categoria = await _context.Categorias.FirstOrDefaultAsync(c => c.Id == id);
+
+        if (categoria is not null)
+        {
+            _context.Categorias.Remove(categoria);
+            await _context.SaveChangesAsync();
+
+            return categoria;
+        }
+
+        return null;
+    }
 }
