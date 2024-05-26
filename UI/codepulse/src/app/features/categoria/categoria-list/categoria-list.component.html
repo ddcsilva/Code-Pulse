@@ -12,6 +12,7 @@
                     <th>Nome</th>
                     <th>Slug</th>
                     <th>Ações</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -19,6 +20,9 @@
                     <td>{{ categoria.id }}</td>
                     <td>{{ categoria.nome }}</td>
                     <td>{{ categoria.slug }}</td>
+                    <td>
+                        <a class="btn btn-light" [routerLink]="['/admin/categorias/editar', categoria.id]">Editar</a>
+                    </td>
                 </tr>
             </tbody>
         </table>
