@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriaService } from '../services/categoria.service';
 import { Categoria } from '../models/categoria.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-categoria-list',
@@ -8,19 +9,11 @@ import { Categoria } from '../models/categoria.model';
   styleUrls: ['./categoria-list.component.css']
 })
 export class CategoriaListComponent implements OnInit {
-
-  categorias?: Categoria[];
+  categorias$?: Observable<Categoria[]>;
 
   constructor(private categoriaService: CategoriaService) { }
 
   ngOnInit(): void {
-    this.categoriaService.obterTodasCategorias().subscribe({
-      next: (response) => {
-        this.categorias = response;
-      },
-      error: () => {
-        console.error('Erro ao obter categorias');
-      }
-    });
+    this.categorias$ = this.categoriaService.obterTodasCategorias();
   }
 }

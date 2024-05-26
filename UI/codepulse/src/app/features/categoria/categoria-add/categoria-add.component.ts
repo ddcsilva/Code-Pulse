@@ -2,6 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { CriarCategoriaRequest } from '../models/criar-categoria-request.model';
 import { CategoriaService } from '../services/categoria.service';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-categoria-add',
@@ -12,7 +13,7 @@ export class CategoriaAddComponent implements OnDestroy {
   model: CriarCategoriaRequest;
   private adicionarCategoriaSubscription?: Subscription;
 
-  constructor(private categoriaService: CategoriaService) {
+  constructor(private categoriaService: CategoriaService, private router: Router) {
     this.model = {
       nome: 'Danilo',
       slug: ''
@@ -22,7 +23,7 @@ export class CategoriaAddComponent implements OnDestroy {
   adicionarCategoria() {
     this.adicionarCategoriaSubscription = this.categoriaService.adicionarCategoria(this.model).subscribe({
       next: () => {
-        console.log('Categoria adicionada com sucesso');
+        this.router.navigate(['/admin/categorias']);
       },
       error: () => {
         console.error('Erro ao adicionar categoria');
