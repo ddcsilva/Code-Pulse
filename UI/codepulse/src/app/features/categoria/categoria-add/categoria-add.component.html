@@ -1,0 +1,21 @@
+<div class="container">
+    <h1 class="mt-3">Adicionar Categoria</h1>
+
+    <form #form="ngForm" (ngSubmit)="adicionarCategoria()">
+        <div class="mt-2">
+            <div class="mt-3">
+                <label class="form-label">Nome da Categoria</label>
+                <input type="text" id="nomeCategoria" class="form-control" name="nomeCategoria" [(ngModel)]="model.nome">
+            </div>
+
+            <div class="mt-3">
+                <label class="form-label">Slug da Categoria</label>
+                <input type="text" id="slugCategoria" class="form-control" name="slugCategoria" [(ngModel)]="model.slug">
+            </div>
+
+            <div class="mt-3">
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </div>
+        </div>
+    </form>
+</div>
