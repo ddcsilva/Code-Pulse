@@ -3,12 +3,12 @@
 public class Post
 {
     public Guid Id { get; set; }
-    public string Titulo { get; set; }
-    public string DescricaoCurta { get; set; }
-    public string Conteudo { get; set; }
-    public string UrlImagemDestaque { get; set; }
-    public string Slug { get; set; }
+    public string Titulo { get; set; } = string.Empty;
+    public string DescricaoCurta { get; set; } = string.Empty;
+    public string Conteudo { get; set; } = string.Empty;
+    public string UrlImagemDestaque { get; set; } = string.Empty;
+    public string Slug { get; set; } = string.Empty;
     public DateTime DataPublicacao { get; set; }
-    public string Autor { get; set; }
+    public string Autor { get; set; } = string.Empty;
     public bool EhVisivel { get; set; }
 }
