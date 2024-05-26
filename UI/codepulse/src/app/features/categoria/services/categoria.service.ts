@@ -16,6 +16,10 @@ export class CategoriaService {
     return this.http.get<Categoria[]>(`${environment.urlApi}/api/Categorias`);
   }
 
+  obterCategoriaPorId(id: string): Observable<Categoria> {
+    return this.http.get<Categoria>(`${environment.urlApi}/api/Categorias/${id}`);
+  }
+
   adicionarCategoria(model: CriarCategoriaRequest): Observable<void> {
     return this.http.post<void>(`${environment.urlApi}/api/Categorias`, model);
   }
