@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CriarPost } from '../models/criar-post.model';
 
 @Component({
   selector: 'app-post-add',
@@ -7,4 +8,26 @@ import { Component } from '@angular/core';
 })
 export class PostAddComponent {
 
+  model: CriarPost;
+
+  constructor() {
+    this.model = {
+      titulo: '',
+      descricaoCurta: '',
+      conteudo: '',
+      urlImagemDestaque: '',
+      slug: '',
+      dataPublicacao: new Date(),
+      autor: '',
+      ehVisivel: true
+    };
+  }
+
+  adicionarPost(): void {
+    console.log(this.model);
+  }
+
+  onDateChange(event: any): void {
+    this.model.dataPublicacao = new Date(event.target.value);
+  }
 }
