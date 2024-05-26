@@ -28,4 +28,8 @@ export class CategoriaService {
   atualizarCategoria(id: string, request: AtualizarCategoriaRequest): Observable<Categoria> {
     return this.http.put<Categoria>(`${environment.urlApi}/api/Categorias/${id}`, request);
   }
+
+  excluirCategoria(id: string): Observable<Categoria> {
+    return this.http.delete<Categoria>(`${environment.urlApi}/api/Categorias/${id}`);
+  }
 }

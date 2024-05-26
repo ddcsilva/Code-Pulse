@@ -54,6 +54,16 @@ export class CategoriaEditComponent implements OnInit, OnDestroy {
     }
   }
 
+  excluirCategoria(): void {
+    if (this.id) {
+      this.categoriaService.excluirCategoria(this.id).subscribe({
+        next: () => {
+          this.router.navigate(['/admin/categorias']);
+        }
+      });
+    }
+  }
+
   ngOnDestroy(): void {
     this.paramsSubscription?.unsubscribe();
     this.atualizarCategoriaSubscription?.unsubscribe();
